@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+#begin
+#  require 'rubygems'
+#  gem 'collectd_gearman'
+#rescue LoadError
+#end
+#CollectdGearman.application.run
+#
+require 'collectd_gearman'
+CollectdGearman::Application.run
