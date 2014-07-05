@@ -93,30 +93,30 @@ module CollectdGearman
       # Plugin.Type
       
       if data["PluginInstance"] and data["TypeInstance"] and data["DataSource"]
-        send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}-#{data["TypeInstance"]}.#{data["DataSource"]}"
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}-#{data["TypeInstance"]}.#{data["DataSource"]}"
       end
       
       if data["PluginInstance"] and data["TypeInstance"]
-        send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}-#{data["TypeInstance"]}"
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}-#{data["TypeInstance"]}"
       end
       
       if data["PluginInstance"] and data["DataSource"]
-        send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}.#{data["DataSource"]}"
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}.#{data["DataSource"]}"
       end
       
       if data["PluginInstance"]
-        send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}"
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}"
       end
       
       if data["TypeInstance"] and data["DataSource"]
-        send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}.#{data["Type"]}-#{data["TypeInstance"]}.#{data["DataSource"]}"
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}.#{data["Type"]}-#{data["TypeInstance"]}.#{data["DataSource"]}"
       end
       
       if data["TypeInstance"]
-        send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}.#{data["Type"]}-#{data["TypeInstance"]}"
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}.#{data["Type"]}-#{data["TypeInstance"]}"
       end
       
-      send_gearman data["Host"],data[:message],data["Severity"],"#{data["Plugin"]}.#{data["Type"]}"
+      send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}.#{data["Type"]}"
     end
     
     def self.send_gearman(host,message,severity,service)
