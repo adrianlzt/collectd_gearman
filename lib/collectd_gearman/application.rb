@@ -92,7 +92,7 @@ module CollectdGearman
       # Plugin.Type-Instance
       # Plugin.Type.DataSource
       # Plugin.Type
-      
+
       if data["PluginInstance"] and data["TypeInstance"] and data["DataSource"]
         send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}-#{data["PluginInstance"]}.#{data["Type"]}-#{data["TypeInstance"]}.#{data["DataSource"]}"
       end
@@ -115,6 +115,10 @@ module CollectdGearman
       
       if data["TypeInstance"]
         send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}.#{data["Type"]}-#{data["TypeInstance"]}"
+      end
+      
+      if data["DataSource"]
+        send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}.#{data["Type"]}.#{data["DataSource"]}"
       end
       
       send_gearman data["Host"],data[:message],data["Severity"],"collectd_#{data["Plugin"]}.#{data["Type"]}"
