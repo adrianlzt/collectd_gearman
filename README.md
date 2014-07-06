@@ -26,6 +26,7 @@ Options that could be defined:
 gearman_server: localhost
 gearman_key: should_be_changed
 send_gearman: /usr/bin/send_gearman
+log_file: /var/log/gearman_collectd.log
 ```
 
 ## Examples

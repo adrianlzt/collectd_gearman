@@ -38,6 +38,7 @@ module CollectdGearman
         opts.on('-s', '--server SERVER', 'Gearman server') { |v| options.gearman_server = v }
         opts.on('-k', '--key KEY', 'Gearman key') { |v| options.gearman_key = v }
         opts.on('-g', '--send_gearman BIN', 'send_gearman binary') { |v| options.send_gearman = v }
+        opts.on('-l', '--log_file FILE', 'log file') { |v| options.log_file = v }
         opts.on('-v', '--verbose', 'verbose') { |v| options.verbose = v }
 
         opts.on_tail("-h", "--help", "-H", "Display this help message.") do
@@ -136,6 +137,12 @@ module CollectdGearman
       raise "Command not found: #{options.send_gearman}" unless File.exist?(options.send_gearman)
       
       puts cmd if options.verbose
+
+      if options.log_file
+        File.open(options.log_file,"a") do |f|
+          f << "[#{Time.now}] #{cmd}\n"
+        end
+      end
 
       system cmd
     end
